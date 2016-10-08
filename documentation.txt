@@ -1,0 +1,107 @@
+1)Extract gtk+-bundle_3.6.4-20130921_win32.zip in new folder. In my system, it is C:\gtk
+
+
+2)Add the gtk bin path to the PATH variable (the system PATH variable). Thus the path i added to the system PATH variable is C:\gtk\bin.
+ 
+ // To edit PATH variable:
+ // right click 'my computer'->  properties -> advanced system settings -> environment variables
+ // select path variable from the system variable box. add a semicolon at the end followed by C:\gtk\bin 
+ // The system PATH variable should then look something like: ...;C:\gtk\bin  (here ... refers to the directory paths already defined in the PATH variable)
+
+
+3)Open command prompt (admin mode).Execute the following commands in order:
+    
+     'pkg-config --cflags gtk+-3.0'  //quotations ' ' not to be included and this should print something reasonable
+        
+     'pango-querymodules > c:\gtk\etc\pango\pango.modules'  //quotations ' ' not to be included and something reasonable should appear on the screen
+
+     'gdk-pixbuf-query-loaders > c:\gtk\lib\gdk-pixbuf-2.0\2.10.0\loaders.cache'   //quotations ' ' not to be included and something reasonable should
+                                                                                   //appear on the screen
+    
+     'gtk-query-immodules-3.0 > c:\gtk\lib\gtk-3.0\3.0.0\immodules.cache'  //quotations ' ' not to be included and something reasonable should appear on the screen
+  
+     'gtk3-demo' //quotations '' not to be included
+
+    // You should get some kind of menu after typing gtk3-demo
+    
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ //Related to MinGW
+
+4)Run mingw-get-setup.exe
+ 
+
+5)Choose the installation directory like C:\MinGW
+ 
+
+6)Under "basic setup", tick all the options. They will be installed  after you select 'apply changes' under 'installation'.
+ 
+
+7)Add the bin path of MinGW to the system PATH variable. I added C:\MinGW\bin
+ 
+
+8)Now download libpthreadGC2.a from ftp://sourceware.org/pub/pthreads-win32/dll-latest/lib/x86/
+   Put this file in C:\MinGW\lib and rename it to libpthread.a
+ 
+
+9)To verify whether MinGW is working (i wanted to test gcc), go to cmd prompt(admin mode) and type gcc
+    If you get some message like gcc: error: no input files... , it means MinGW is up and working.
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  //related to code blocks 
+ 
+
+10)Do the normal installation of code blocks 16.01
+ 
+
+11)Open codeblocks
+ 
+
+12)Settings->Compiler-> Linker Settings
+      Add-> open the location C:\gtk\lib -> select all the files with .a extension -> click ok
+ 
+
+13)Click on Search directories tab-> compiler. Now add the directories shown in attached image (all the directories have to be added manually)
+ 
+
+14)Click on linker tab (under search directories). Add C:\gtk\lib
+ 
+
+15)Click on toolchain executables. Set the "compiler's installation directory" as C:\MinGW\bin
+ 
+
+16)Under program files, set the c compiler as gcc.exe by selecting it from  C:\MinGW\bin
+      set the c++ complier as g++.exe by selecting it from  C:\MinGW\bin
+      set the "linker for dynamic libs" to g++.exe by selecting it from  C:\MinGW\bin
+      set the "linker for static libs" to ar.exe by selecting it from  C:\MinGW\bin
+      set the debugger to GDB/CDB debugger:gdb
+      set the "resource compiler" to windres.exe by selecting it from  C:\MinGW\bin
+      set the "make program" to mingw32-make.exe by selecting it from  C:\MinGW\bin
+      click ok
+   ---------------------------------------------------------------------------------
+// testing a sample file. for simplicity, i have saved this file in C:\    
+
+
+17)Open sample.c (provided along with this documentation).
+
+
+18)Build and run it (click on the green arrow)
+
+
+19)Alternate way of testing: open cmd (admin mode). change directory to C:\ 
+      
+      Execute the following command:
+
+      pkg-config --cflags gtk+-3.0 pkg-config --libs gtk+-3.0
+
+      Whatever output you get, save it somewhere for example in a text file (pkg-config --cflags gtk+-3.0 pkg-config --libs gtk+-3.0 > output.txt)
+      
+      Then type the following in cmd (admin mode)
+      gcc -o sample.exe sample.c "whatever output you got from the above command that you have saved somewhere. The quotes are not to be included"
+
+     you won't get any output. just the prompt will appear again. now go to the location where you have saved sample.c there you will find an exe file with the name sample.Run it.  
+        
+
+
+
+     
+
+     
