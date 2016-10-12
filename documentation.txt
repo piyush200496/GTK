@@ -76,6 +76,8 @@
       set the "resource compiler" to windres.exe by selecting it from  C:\MinGW\bin
       set the "make program" to mingw32-make.exe by selecting it from  C:\MinGW\bin
       click ok
+17) CLick on file-> new-> right click on GTK+ project -> click "edit this script". Now replace the entire text with the text provided in gtkscript.txt file that i have provided. Now save wizard.script       
+      
    ---------------------------------------------------------------------------------
 // testing a sample file. for simplicity, i have saved this file in C:\    
 
