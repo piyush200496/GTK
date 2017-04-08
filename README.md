@@ -14,3 +14,4 @@ I have created "documentation.txt" which details the installation of GTK 3.0 and
 #OPENGL
 Opengl Based programs. All tested on codeblocks.
 1) polygonfill.cpp - Boundary fill using multicolored boundary, Flood fill performance in case of both single color and multicolor boundary, Implemented using subwindows.
+2) LiangBarsky_line_clipping.cpp - Implementation of Liang Barsky algorithm. Left mouse click selects the required line's one end point and the right mouse click sets the other point. Alternate between the mouse clicks to avoid conflict. Green Window represents clipping window.
